@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
@@ -12,7 +13,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $data = Guru::all();
+        $data = Guru::with('mapel')->orderBy('created_at', 'desc')->get();
         return view("guru.index", compact("data"));
     }
 
@@ -21,7 +22,8 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view("guru.create");
+        $data_mapel = MataPelajaran::all();
+        return view("guru.create", compact('data_mapel'));
     }
 
     /**
@@ -69,7 +71,8 @@ class GuruController extends Controller
      */
     public function edit(Guru $guru)
     {
-        return view("guru.edit", compact("guru"));
+        $data_mapel = MataPelajaran::all();
+        return view("guru.edit", compact("guru", "data_mapel"));
     }
 
     /**
@@ -78,7 +81,6 @@ class GuruController extends Controller
     public function update(Request $request, Guru $guru)
     {
         $request->validate([
-            "image" => "required|image|mimes:jpeg,png,jpg",
             "nip" => "required",
             "nama_guru" => "required",
             "no_hp" => "required",
@@ -86,21 +88,28 @@ class GuruController extends Controller
             "mata_pelajaran" => "required",
             "alamat" => "required",
             "username" => "required",
+            "image" => "image|mimes:jpeg,png,jpg",
         ]);
 
-        $input = $request->all();
+        $input = $request->except('image');
 
-        if ($image = $request->file('image')) {
+        if ($request->hasFile('image')) {
             $destinationPath = 'images_guru/';
+
+            // Hapus gambar lama jika ada
+            if ($guru->image && file_exists($destinationPath . $guru->image)) {
+                unlink($destinationPath . $guru->image);
+            }
+
+            // Upload dan simpan gambar baru
+            $image = $request->file('image');
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $postImage);
-            $input['image'] = "$postImage";
-        } else {
-            unset($input['image']);
+            $input['image'] = $postImage;
         }
 
         $guru->update($input);
-        return to_route("guru.index")->with("success", "Data berhasil disimpan");
+        return redirect()->route("guru.index")->with("success", "Data berhasil diupdate");
     }
 
     /**

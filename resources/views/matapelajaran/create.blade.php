@@ -24,7 +24,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="">Nama Mata Pelajaran</label>
-                                <input type="text" name="nama_matapelajaran" class="form-control">
+                                <input type="text" name="nama_matapelajaran" class="form-control" autofocus>
                             </div>
                             <div class="mb-3">
                                 <label for="">Jurusan</label>

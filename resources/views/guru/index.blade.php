@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Data Guru')
+@section('title', 'Data Guru/')
 @section('content')
 
     <link rel="stylesheet" href="/beckend/assets/css/bootstrap.min.css">
@@ -30,7 +30,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Nip</th>
-                                    <th scope="col">Nama Guru</th>
+                                    <th scope="col">Nama</th>
                                     <th scope="col">No HP</th>
                                     <th scope="col">Jenis kelamin</th>
                                     <th scope="col">Mapel</th>
@@ -52,7 +52,7 @@
                                         <td>{{ $row->nama_guru }}</td>
                                         <td>{{ $row->no_hp }}</td>
                                         <td>{{ $row->jk }}</td>
-                                        <td>{{ $row->mata_pelajaran }}</td>
+                                        <td>{{ $row->mapel?->nama_matapelajaran }}</td>
                                         <td>{{ $row->alamat }}</td>
                                         <td>{{ $row->username }}</td>
                                         <td>

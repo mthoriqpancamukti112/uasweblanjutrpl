@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Tambah Galery')
+@section('title', 'Tambah Galery/')
 @section('content')
 
     <div class="container px-1 mt-2">
@@ -23,7 +23,11 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="image">Gambar</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" class="form-control" autofocus>
+                            </div>
+                            <div class="mb-3">
+                                <label for="">Judul</label>
+                                <input type="text" name="judul" class="form-control">
                             </div>
                             <input type="submit" value="Simpan" class="btn btn-success">
                             <a href="{{ route('galeri.index') }}" class="btn btn-danger">Batal</a>

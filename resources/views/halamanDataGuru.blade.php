@@ -22,7 +22,6 @@
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Nip</th>
                                 <th scope="col">Nama Guru</th>
-                                <th scope="col">No HP</th>
                                 <th scope="col">Jenis kelamin</th>
                                 <th scope="col">Mapel</th>
                                 <th scope="col">Alamat</th>
@@ -40,9 +39,8 @@
                                     </td>
                                     <td>{{ $row->nip }}</td>
                                     <td>{{ $row->nama_guru }}</td>
-                                    <td>{{ $row->no_hp }}</td>
                                     <td>{{ $row->jk }}</td>
-                                    <td>{{ $row->mata_pelajaran }}</td>
+                                    <td>{{ $row->mapel?->nama_matapelajaran }}</td>
                                     <td>{{ $row->alamat }}</td>
                                     <td>{{ $row->username }}</td>
                                 </tr>

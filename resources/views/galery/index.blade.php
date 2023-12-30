@@ -22,6 +22,7 @@
                                 <tr style="text-align: center; font-size: 14px">
                                     <th scope="col">No</th>
                                     <th scope="col">Gambar</th>
+                                    <th scope="col">Judul</th>
                                     <th scope="col" width="150px">Aksi</th>
                                 </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                             <img src="/galery/{{ $row->image }}" width="100px" class="rounded"
                                                 style="width: 100px">
                                         </td>
+                                        <td>{{ $row->judul }}</td>
                                         <td>
                                             <form method="POST" action="{{ route('galeri.destroy', $row->id) }}">
                                                 @csrf
@@ -60,19 +62,4 @@
             </div>
         </div>
     </div>
-    <section>
-        <div class="container">
-            <h2 class="h1-responsive font-weight-bold text-center my-4">Gallery</h2>
-            <!-- Gallery -->
-            @forelse ($data as $row)
-                <img src="/galery/{{ $row->image }}" class="rounded" width="100px" height="100px">
-
-            @empty
-                <div class="alert alert-danger">
-                    Data Galery belum Tersedia.
-                </div>
-            @endforelse
-            <!-- Gallery -->
-        </div>
-    </section>
 @endsection

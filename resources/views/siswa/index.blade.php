@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Data Siswa')
+@section('title', 'Data Siswa/')
 @section('content')
 
     <link rel="stylesheet" href="/beckend/assets/css/bootstrap.min.css">
@@ -41,8 +41,8 @@
                                         <td>{{ $row->kota }}</td>
                                         <td>{{ $row->jk }}</td>
                                         <td>{{ $row->agama }}</td>
-                                        <td>{{ $row->jurusan }}</td>
-                                        <td>{{ $row->kelas }}</td>
+                                        <td>{{ $row->jurusann?->nama_jurusan }}</td>
+                                        <td>{{ $row->kelass?->nama_kelas }}</td>
                                         <td>{{ $row->username }}</td>
                                         <td>
                                             <form method="POST" action="{{ route('siswa.destroy', $row->id) }}">

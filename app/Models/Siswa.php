@@ -20,4 +20,14 @@ class Siswa extends Model
         'kelas',
         'username'
     ];
+
+    public function jurusann()
+    {
+        return $this->belongsTo(Jurusan::class, 'jurusan', 'id');
+    }
+
+    public function kelass()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas', 'id');
+    }
 }

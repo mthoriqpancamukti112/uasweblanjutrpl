@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Edit Kelas')
+@section('title', 'Edit Kelas/')
 @section('content')
 
     <div class="container px-1 mt-2">

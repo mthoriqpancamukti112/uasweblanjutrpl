@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Edit Guru')
+@section('title', 'Edit Guru/')
 @section('content')
 
     <div class="container px-1 mt-2">
@@ -20,7 +20,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('guru.update', $guru->id) }}" method="post">
+                        <form action="{{ route('guru.update', $guru->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="mb-3">
@@ -41,13 +41,24 @@
                                 <input type="number" name="no_hp" class="form-control" value="{{ $guru->no_hp }}">
                             </div>
                             <div class="mb-3">
-                                <label for="">Jenis Kelmain</label>
-                                <input type="text" name="jk" class="form-control" value="{{ $guru->jk }}">
+                                <label for="">Jenis Kelamin</label>
+                                <select name="jk" class="form-select">
+                                    <option disabled value="">-- Pilih Jenis Kelamin --</option>
+                                    <option value="L" {{ $guru->jk == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="P" {{ $guru->jk == 'P' ? 'selected' : '' }}>Perempuan</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Mapel</label>
-                                <input type="text" name="mata_pelajaran" class="form-control"
-                                    value="{{ $guru->mata_pelajaran }}">
+                                <select name="mata_pelajaran" id="" class="form-select">
+                                    <option disabled value="">-- Pilih Mapel --</option>
+                                    @foreach ($data_mapel as $row)
+                                        <option value="{{ $row->id }}"
+                                            {{ $guru->mapel->id == $row->id ? 'selected' : '' }}>
+                                            {{ $row->nama_matapelajaran }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Alamat</label>

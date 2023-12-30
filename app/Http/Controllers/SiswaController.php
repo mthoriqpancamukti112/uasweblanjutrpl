@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $data = Siswa::all();
+        $data = Siswa::with('jurusann', 'kelass')->orderBy('created_at', 'desc')->get();
         return view("siswa.index", compact("data"));
     }
 
@@ -21,7 +23,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view("siswa.create");
+        $data_jurusan = Jurusan::all();
+        $data_kelas = Kelas::all();
+        return view("siswa.create", compact('data_jurusan', 'data_kelas'));
     }
 
     /**
@@ -57,7 +61,9 @@ class SiswaController extends Controller
      */
     public function edit(Siswa $siswa)
     {
-        return view("siswa.edit", compact("siswa"));
+        $data_jurusan = Jurusan::all();
+        $data_kelas = Kelas::all();
+        return view("siswa.edit", compact("siswa", 'data_jurusan', 'data_kelas'));
     }
 
     /**

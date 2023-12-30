@@ -1,5 +1,5 @@
 @extends('layout.fe.template')
-@section('title', 'Beranda')
+@section('title', 'Beranda/')
 @section('content')
     <style>
         .custom-gallery img {

@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Edit Siswa')
+@section('title', 'Edit Siswa/')
 @section('content')
 
     <div class="container px-1 mt-2">
@@ -36,8 +36,12 @@
                                 <input type="text" name="kota" class="form-control" value="{{ $siswa->kota }}">
                             </div>
                             <div class="mb-3">
-                                <label for="">Jenis Kelmain</label>
-                                <input type="text" name="jk" class="form-control" value="{{ $siswa->jk }}">
+                                <label for="">Jenis Kelamin</label>
+                                <select name="jk" class="form-select">
+                                    <option disabled value="">-- Pilih Jenis Kelamin --</option>
+                                    <option value="L" {{ $siswa->jk == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="P" {{ $siswa->jk == 'P' ? 'selected' : '' }}>Perempuan</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Agama</label>
@@ -45,11 +49,27 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">Jurusan</label>
-                                <input type="text" name="jurusan" class="form-control" value="{{ $siswa->jurusan }}">
+                                <select name="jurusan" id="" class="form-select">
+                                    <option disabled value="">-- Pilih Jurusan --</option>
+                                    @foreach ($data_jurusan as $row)
+                                        <option value="{{ $row->id }}"
+                                            {{ $siswa->jurusan == $row->id ? 'selected' : '' }}>
+                                            {{ $row->nama_jurusan }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Kelas</label>
-                                <input type="text" name="kelas" class="form-control" value="{{ $siswa->kelas }}">
+                                <select name="kelas" id="" class="form-select">
+                                    <option disabled value="">-- Pilih Kelas --</option>
+                                    @foreach ($data_kelas as $row)
+                                        <option value="{{ $row->id }}"
+                                            {{ $siswa->kelas == $row->id ? 'selected' : '' }}>
+                                            {{ $row->nama_kelas }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Username</label>

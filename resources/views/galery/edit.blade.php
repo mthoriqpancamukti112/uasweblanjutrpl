@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Edit Galery')
+@section('title', 'Edit Galery/')
 @section('content')
 
     <div class="container px-1 mt-2">
@@ -19,13 +19,17 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('galeri.update', $galeri->id) }}" method="post">
+                        <form action="{{ route('galeri.update', $galeri->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="mb-3">
                                 <label>Gambar</label>
                                 <input type="file" name="image" class="form-control">
                                 <img src="/galery/{{ $galeri->image }}" width="300px">
+                            </div>
+                            <div class="mb-3">
+                                <label for="">Judul</label>
+                                <input type="text" name="judul" class="form-control" value="{{ $galeri->judul }}">
                             </div>
                             <input type="submit" value="Simpan" class="btn btn-success">
                             <a href="{{ route('galeri.index') }}" class="btn btn-warning">Batal</a>

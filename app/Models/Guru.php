@@ -20,4 +20,9 @@ class Guru extends Model
         'alamat',
         'username'
     ];
+
+    public function mapel()
+    {
+        return $this->belongsTo(MataPelajaran::class, 'mata_pelajaran', 'id');
+    }
 }

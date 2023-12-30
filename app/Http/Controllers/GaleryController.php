@@ -31,6 +31,7 @@ class GaleryController extends Controller
     {
         $request->validate([
             "image" => "required|image|mimes:jpeg,png,jpg",
+            "judul" => "required",
         ]);
 
         $input = $request->all();
@@ -71,22 +72,32 @@ class GaleryController extends Controller
     public function update(Request $request, Galery $galeri)
     {
         $request->validate([
-            "image" => "required|image|mimes:jpeg,png,jpg|max:2048",
+            "judul" => "required",
+            "image" => "nullable|image|mimes:jpeg,png,jpg",
         ]);
 
-        $input = $request->all();
+        $input = $request->except('image');
 
-        if ($image = $request->file('image')) {
+        if ($request->hasFile('image')) {
             $destinationPath = 'galery/';
+
+            // Hapus gambar lama jika ada
+            if ($galeri->image && file_exists($destinationPath . $galeri->image)) {
+                unlink($destinationPath . $galeri->image);
+            }
+
+            // Upload dan simpan gambar baru
+            $image = $request->file('image');
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $postImage);
-            $input['image'] = "$postImage";
+            $input['image'] = $postImage;
         } else {
-            unset($input['image']);
+            // Jika tidak ada gambar baru diunggah, gunakan gambar lama
+            $input['image'] = $galeri->image;
         }
 
         $galeri->update($input);
-        return to_route("galeri.index")->with("success", "Data berhasil disimpan");
+        return redirect()->route("galeri.index")->with("success", "Data berhasil diupdate");
     }
 
     /**

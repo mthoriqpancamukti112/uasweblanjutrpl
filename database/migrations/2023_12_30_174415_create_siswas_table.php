@@ -18,8 +18,8 @@ return new class extends Migration
             $table->String('kota', 100);
             $table->String('jk', 50);
             $table->String('agama', 100);
-            $table->String('jurusan', 100);
-            $table->String('kelas', 100);
+            $table->integer('jurusan');
+            $table->integer('kelas');
             $table->String('username', 100);
             $table->timestamps();
         });

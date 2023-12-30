@@ -11,6 +11,7 @@ class Galery extends Model
 
     protected $table = 'galeries';
     protected $fillable = [
-        'image'
+        'image',
+        'judul'
     ];
 }

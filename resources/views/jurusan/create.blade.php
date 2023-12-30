@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Tambah Jurusan')
+@section('title', 'Tambah Jurusan/')
 @section('content')
 
     <div class="container px-1 mt-2">
@@ -23,7 +23,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="">Nama Jurusan</label>
-                                <input type="text" name="nama_jurusan" class="form-control">
+                                <input type="text" name="nama_jurusan" class="form-control" autofocus>
                             </div>
                             <input type="submit" value="Simpan" class="btn btn-success">
                             <a href="{{ route('jurusan.index') }}" class="btn btn-danger">Batal</a>

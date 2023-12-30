@@ -1,5 +1,5 @@
 @extends('layout.be.template')
-@section('title', 'Tambah Guru')
+@section('title', 'Tambah Guru/')
 @section('content')
 
     <div class="container px-1 mt-2">
@@ -24,7 +24,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="image">Gambar</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" class="form-control" autofocus>
                             </div>
                             <div class="mb-3">
                                 <label for="">Nip</label>
@@ -39,12 +39,20 @@
                                 <input type="number" name="no_hp" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="">Jenis Kelamin</label>
-                                <input type="text" name="jk" class="form-control">
+                                <select name="jk" class="form-select">
+                                    <option value="" disabled selected>-- Pilih Jenis Kelamin --</option>
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Mapel</label>
-                                <input type="text" name="mata_pelajaran" class="form-control">
+                                <select name="mata_pelajaran" id="" class="form-select">
+                                    <option value="" disabled selected>-- Pilih Mapel --</option>
+                                    @foreach ($data_mapel as $row)
+                                        <option value="{{ $row->id }}">{{ $row->nama_matapelajaran }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Alamat</label>
