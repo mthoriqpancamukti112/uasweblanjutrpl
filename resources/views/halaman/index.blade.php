@@ -1,11 +1,32 @@
 @extends('layout.fe.template')
-@section('title', 'Beranda/')
+@section('title', 'SMAN 7 Mataram - Mendidik Untuk Maju')
 @section('content')
     <style>
         .custom-gallery img {
             margin-right: 40px;
             margin-bottom: 40px;
-            padding-left: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .image-container {
+            flex: 0 0 auto;
+            margin-right: 80px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-container {
+            flex: 1;
+        }
+
+        #about {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
     </style>
 
@@ -67,16 +88,14 @@
                 <!--Section description-->
                 <p class="text-center w-responsive mx-auto mb-1">Pengantar Kepala SMA Negeri 7 Mataram</p>
                 <hr class="mx-auto" style="width: 50%; border-top: 2px solid #0066ff;">
-                <div class="row  pt-5 pb-5">
-
-                    <div class="col-lg-5 align-items-stretch video-box"
-                        style='background-image: url("/frontend/images/kepala-sekolah.jpg");'>
-                    </div>
-
-                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
-
-                        <div class="content">
-                            <h3>Assalamu’alaikum Warahmatullah Wabarakatuh</h3>
+                <div class="row pt-5 pb-5">
+                    <div class="content">
+                        <div class="image-container">
+                            <img style="width: 300px; height: 400px;" src="/frontend/images/kepala-sekolah.jpg"
+                                alt="">
+                        </div>
+                        <div class="text-container">
+                            <h3 style="font-size: 25px">Assalamu’alaikum Warahmatullah Wabarakatuh</h3>
                             <p style="text-align: justify">
                                 &emsp;&emsp;Alhamdulillah puji syukur kehadirat Allah Swt, Tuhan Yang
                                 Mahakuasa yang telah
@@ -100,21 +119,68 @@
                                 memberikan gambaran mengenai apa yang menjadi visi dan misi SMA Negeri 7 Mataram
                                 kedepan.
                             </p>
-                            <h3> Waalaikumussalam Warahmatullah Wabaraakatuh.</h3>
+                            <h3 style="font-size: 25px"> Waalaikumussalam Warahmatullah Wabaraakatuh.</h3>
                             <p>Mataram, Januari 2022</p>
                             <br>
                             <p>Kepala,</p>
-                            <h3>Achmad Hudri, S.Pd. MM</h3>
+                            <h3 style="font-size: 15px">Achmad Hudri, S.Pd. MM</h3>
                         </div>
-
                     </div>
-
                 </div>
-
+            </div>
             </div>
         </section><!-- End About Section -->
 
-        <section>
+        <section id="about" class="about">
+            <div class="container course pb-5 pt-5">
+                <h2 class="h1-responsive font-weight-bold text-center my-4">Jumlah Data</h2>
+                <hr class="mx-auto" style="width: 50%; border-top: 2px solid #0066ff;">
+                <div class="container-fluid px-4">
+                    <div class="row g-3 my-2">
+                        <div class="col-md-3">
+                            <div class="p-3 bg-primary shadow-sm d-flex justify-content-around align-items-center rounded">
+                                <div>
+                                    <h3 class="fs-2 text-white">{{ $jumlahGuru }}</h3>
+                                    <p class="fs-5 text-white">Guru</p>
+                                </div>
+                                <i class="fa-solid fa-chalkboard-user" style="font-size: 50px; color: white"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="p-3 bg-success shadow-sm d-flex justify-content-around align-items-center rounded">
+                                <div>
+                                    <h3 class="fs-2 text-white">{{ $jumlahSiswa }}</h3>
+                                    <p class="fs-5 text-white">Siswa</p>
+                                </div>
+                                <i class="fa-solid fa-users" style="font-size: 50px; color: white"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="p-3 bg-warning shadow-sm d-flex justify-content-around align-items-center rounded">
+                                <div>
+                                    <h3 class="fs-2 text-white">{{ $jumlahMapel }}</h3>
+                                    <p class="fs-5 text-white">Mapel</p>
+                                </div>
+                                <i class="fa-regular fa-file" style="font-size: 50px; color: white"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="p-3 bg-danger shadow-sm d-flex justify-content-around align-items-center rounded">
+                                <div>
+                                    <h3 class="fs-2 text-white">{{ $jumlahKelas }}</h3>
+                                    <p class="fs-5 text-white">Kelas</p>
+                                </div>
+                                <i class="fa-solid fa-list" style="font-size: 50px; color: white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="about" class="about">
             <div class="container course pb-5 pt-5">
                 <h2 class="h1-responsive font-weight-bold text-center my-4">Artikel dan Info Terkait</h2>
                 <hr class="mx-auto" style="width: 50%; border-top: 2px solid #0066ff;">
@@ -170,11 +236,10 @@
             </div>
         </section>
 
-        <section>
-            <div class="container">
+        <section id="about" class="about">
+            <div class="container course pb-5 pt-5">
                 <h2 class="h1-responsive font-weight-bold text-center my-4">Gallery</h2>
                 <hr class="mx-auto" style="width: 50%; border-top: 2px solid #0066ff;">
-
                 <!-- Gallery -->
                 <div class="text-center custom-gallery">
                     @forelse ($data as $row)

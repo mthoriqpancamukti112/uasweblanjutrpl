@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galery;
+use App\Models\Guru;
+use App\Models\Kelas;
+use App\Models\MataPelajaran;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class HalamanController extends Controller
@@ -12,8 +16,13 @@ class HalamanController extends Controller
      */
     public function index()
     {
+        $jumlahGuru = Guru::count();
+        $jumlahSiswa = Siswa::count();
+        $jumlahMapel = MataPelajaran::count();
+        $jumlahKelas = Kelas::count();
         $data = Galery::all();
-        return view("halaman.index", compact("data"));
+
+        return view("halaman.index", compact('jumlahGuru', 'jumlahSiswa', 'jumlahMapel', 'jumlahKelas', 'data'));
     }
 
     /**

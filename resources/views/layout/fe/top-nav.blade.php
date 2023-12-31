@@ -1,27 +1,25 @@
+<style>
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-image {
+        margin-right: 10px;
+    }
+</style>
 <header>
     <section id="topbar"
         class="mb-2 mb-lg-0 mb-sm-0 d-none d-lg-flex align-items-center pt-2 pb-2 bg-primary text-white topbar-transparent">
         <div class="container">
             <div class="row">
                 <div style="text-align: center">
-                    <a href="" class="me-4 text-reset">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="bi bi-twitter"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="bi bi-google"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="bi bi-github"></i>
-                    </a>
+                    <a href="" style="color: white" class="me-4"><i class="bi bi-twitter"></i></a>
+                    <a href="" style="color: white" class="me-4"><i class="bi bi-facebook"></i></a>
+                    <a href="" style="color: white" class="me-4"><i class="bi bi-google"></i></a>
+                    <a href="" style="color: white" class="me-4"><i class="bi bi-instagram"></i></a>
+                    <a href="" style="color: white" class="me-4"><i class="bi bi-linkedin"></i></a>
+                    <a href="" style="color: white" class="me-4"><i class="bi bi-github"></i></a>
                 </div>
             </div>
         </div>
@@ -29,8 +27,12 @@
     <!--Navbar Start-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <h2 class="fw-bold  mb-2 mb-lg-0 mb-sm-0">SMAN 7 Mataram</h2>
+            <a class="navbar-brand" href="{{ route('halaman-index') }}">
+                <div class="logo-container">
+                    <img src="/frontend/images/sma7.png" alt="Logo SMAN 7 Mataram" class="logo-image" width="50px"
+                        height="50px">
+                    <h2 class="fw-bold mb-2 mb-lg-0 mb-sm-0">SMAN 7 Mataram</h2>
+                </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -59,7 +61,7 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 action-menu">
                     <li class="nav-item">
                         <a class="nav-link " href="{{ url('/login') }}">
-                            <i class="bi bi-person "></i>
+                            <i class="bi bi-person "></i>Login
                         </a>
                     </li>
                 </ul>

@@ -1,4 +1,5 @@
 @extends('layout.fe.template')
+@section('title', 'Data Guru - SMAN 7 Mataram')
 @section('content')
     <style>
         .konten-container {

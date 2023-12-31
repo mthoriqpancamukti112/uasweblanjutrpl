@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="{{ url('admin') }}">
+            <a class="nav-link " href="{{ route('dashboard-index') }}">
                 <i class="fa-solid fa-gauge"></i>
                 <span>Dashboard</span>
             </a>

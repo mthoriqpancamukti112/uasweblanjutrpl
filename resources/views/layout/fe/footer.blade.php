@@ -10,12 +10,13 @@
             <div class="row mt-3">
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <img src="/frontend/images/sma7.png" alt="Logo SMAN 7 Mataram">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fa-solid fa-school me-3"></i>SMAN 7 Mataram
+                        SMAN 7 Mataram
                     </h6>
                     <p>
-                        Didirikan pada tahun 2003. Sekolah ini mendapat prestasi berturut – turut dalam ajang
+                        Didirikan pada tahun 2003. Sekolah ini mendapat prestasi berturut-turut dalam ajang
                         sekolah sehat.
                     </p>
                 </div>

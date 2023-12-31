@@ -1,4 +1,5 @@
 @extends('layout.fe.template')
+@section('title', 'Data Gallery - SMAN 7 Mataram')
 @section('content')
     <style>
         .konten-container {
@@ -8,7 +9,6 @@
         .custom-gallery img {
             margin-right: 40px;
             margin-bottom: 40px;
-            padding-left: 50px;
         }
     </style>
     <div class="konten-container">

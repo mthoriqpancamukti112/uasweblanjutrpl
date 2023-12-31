@@ -1,8 +1,10 @@
 @extends('layout.fe.template')
+@section('title', 'Data Profile - SMAN 7 Mataram')
 @section('content')
     <style>
         .konten-container {
             padding: 20px;
+            padding-inline: 300px;
         }
     </style>
 
