@@ -29,8 +29,16 @@
                                     value="{{ $mapel->nama_matapelajaran }}">
                             </div>
                             <div class="mb-3">
-                                <label>Jurusan</label>
-                                <input type="text" name="jurusan" class="form-control" value="{{ $mapel->jurusan }}">
+                                <label for="">Jurusan</label>
+                                <select name="jurusan" id="" class="form-select">
+                                    <option disabled value="">-- Pilih Jurusan --</option>
+                                    @foreach ($data_jurusan as $row)
+                                        <option value="{{ $row->id }}"
+                                            {{ $mapel->jurusan == $row->id ? 'selected' : '' }}>
+                                            {{ $row->nama_jurusan }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <input type="submit" value="Simpan" class="btn btn-success">
                             <a href="{{ route('mapel.index') }}" class="btn btn-warning">Batal</a>

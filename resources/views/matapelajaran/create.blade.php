@@ -28,7 +28,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">Jurusan</label>
-                                <input type="text" name="jurusan" class="form-control">
+                                <select name="jurusan" id="" class="form-select">
+                                    <option value="" disabled selected>-- Pilih Jurusan --</option>
+                                    @foreach ($data_jurusan as $row)
+                                        <option value="{{ $row->id }}">{{ $row->nama_jurusan }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <input type="submit" value="Simpan" class="btn btn-success">
                             <a href="{{ route('mapel.index') }}" class="btn btn-danger">Batal</a>

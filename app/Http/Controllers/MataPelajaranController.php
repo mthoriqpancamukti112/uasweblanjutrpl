@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
 use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,15 @@ class MataPelajaranController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = MataPelajaran::all();
-        return view("matapelajaran.index", compact("data"));
+        if ($request->has('cari')) {
+            $data = MataPelajaran::where('nama_matapelajaran', 'like', '%' . $request->cari . '%')->get();
+        } else {
+            $data = MataPelajaran::with('jurusann')->orderBy('nama_matapelajaran', 'asc')->get();
+        }
+
+        return view("matapelajaran.index", compact("data", "request"));
     }
 
     /**
@@ -21,7 +27,8 @@ class MataPelajaranController extends Controller
      */
     public function create()
     {
-        return view("matapelajaran.create");
+        $data_jurusan = Jurusan::all();
+        return view("matapelajaran.create", compact('data_jurusan'));
     }
 
     /**
@@ -30,7 +37,7 @@ class MataPelajaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nama_matapelajaran" => "required",
+            "nama_matapelajaran" => "required|unique:mata_pelajarans",
             "jurusan" => "required",
         ]);
 
@@ -51,7 +58,8 @@ class MataPelajaranController extends Controller
      */
     public function edit(MataPelajaran $mapel)
     {
-        return view("matapelajaran.edit", compact("mapel"));
+        $data_jurusan = Jurusan::all();
+        return view("matapelajaran.edit", compact("mapel", "data_jurusan"));
     }
 
     /**

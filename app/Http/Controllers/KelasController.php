@@ -12,7 +12,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $data = Kelas::all();
+        $data = Kelas::orderBy('nama_kelas', 'asc')->get();
         return view("kelas.index", compact("data"));
     }
 
@@ -30,7 +30,7 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nama_kelas" => "required",
+            "nama_kelas" => "required|unique:kelas",
         ]);
 
         Kelas::create($request->all());

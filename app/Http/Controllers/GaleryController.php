@@ -10,10 +10,15 @@ class GaleryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Galery::all();
-        return view("galery.index", compact("data"));
+        if ($request->has('cari')) {
+            $data = Galery::where('judul', 'like', '%' . $request->cari . '%')->get();
+        } else {
+            $data = Galery::orderBy('judul', 'asc')->get();
+        }
+
+        return view("galery.index", compact("data", "request"));
     }
 
     /**
@@ -31,7 +36,7 @@ class GaleryController extends Controller
     {
         $request->validate([
             "image" => "required|image|mimes:jpeg,png,jpg",
-            "judul" => "required",
+            "judul" => "required|unique:galeries",
         ]);
 
         $input = $request->all();

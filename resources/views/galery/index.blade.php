@@ -10,13 +10,29 @@
             <div class="col-md-12">
 
                 <a href="{{ route('galeri.create') }}" class="btn btn-primary mb-3">
-                    <i class="fas fa-plus"></i>Tambah Data Galery
+                    <i class="fas fa-plus me-2"></i>Tambah Data
                 </a>
+
+                <!-- Tambahkan form pencarian di atas tabel -->
+                <form action="{{ route('galeri.index') }}" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" name="cari" value="{{ $request->cari }}" class="form-control"
+                            placeholder="Cari berdasarkan judul...">
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                </form>
 
                 <div class="card">
                     <div class="card-header" style="font-size: 20px; text-align: center; color: black; font-weight: bold">
                         Data Galery</div>
                     <div class="card-body">
+
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
+
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr style="text-align: center; font-size: 14px">
@@ -52,7 +68,7 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        Data Galery belum Tersedia.
+                                        Data galery belum ada.
                                     </div>
                                 @endforelse
                             </tbody>

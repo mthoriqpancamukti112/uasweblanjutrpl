@@ -14,12 +14,14 @@
         <div class="container">
             <div class="row">
                 <div style="text-align: center">
-                    <a href="" style="color: white" class="me-4"><i class="bi bi-twitter"></i></a>
-                    <a href="" style="color: white" class="me-4"><i class="bi bi-facebook"></i></a>
-                    <a href="" style="color: white" class="me-4"><i class="bi bi-google"></i></a>
-                    <a href="" style="color: white" class="me-4"><i class="bi bi-instagram"></i></a>
-                    <a href="" style="color: white" class="me-4"><i class="bi bi-linkedin"></i></a>
-                    <a href="" style="color: white" class="me-4"><i class="bi bi-github"></i></a>
+                    <a href="https://twitter.com/smanju_mataram?lang=id" style="color: white" class="me-4"><i
+                            class="bi bi-twitter"></i></a>
+                    <a href="https://m.facebook.com/profile.php?id=972717242792743" style="color: white"
+                        class="me-4"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/smanjumtr/?hl=id" style="color: white" class="me-4"><i
+                            class="bi bi-instagram"></i></a>
+                    <a href="https://github.com/mthoriqpancamukti112/uasweblanjutrpl" style="color: white"
+                        class="me-4"><i class="bi bi-github"></i></a>
                 </div>
             </div>
         </div>

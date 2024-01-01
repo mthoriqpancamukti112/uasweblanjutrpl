@@ -14,6 +14,14 @@
         <hr class="mx-auto" style="width: 50%; border-top: 2px solid #0066ff;">
         <br>
         <div class="container px-1 mt-1">
+            <!-- Tambahkan form pencarian di atas tabel -->
+            <form action="{{ route('halamanDataGuru') }}" method="GET" class="mb-3">
+                <div class="input-group">
+                    <input type="text" name="cari" value="{{ $request->cari }}" class="form-control"
+                        placeholder="Cari berdasarkan nama guru...">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
+            </form>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover">
@@ -47,7 +55,7 @@
                                 </tr>
                             @empty
                                 <div class="alert alert-danger">
-                                    Data Guru belum Tersedia.
+                                    Guru belum ada.
                                 </div>
                             @endforelse
                         </tbody>

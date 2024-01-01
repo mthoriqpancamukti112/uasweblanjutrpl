@@ -12,10 +12,15 @@ class SiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Siswa::with('jurusann', 'kelass')->orderBy('created_at', 'desc')->get();
-        return view("siswa.index", compact("data"));
+        if ($request->has('cari')) {
+            $data = Siswa::where('nama_siswa', 'like', '%' . $request->cari . '%')->get();
+        } else {
+            $data = Siswa::with('jurusann', 'kelass')->orderBy('nama_siswa', 'asc')->get();
+        }
+
+        return view("siswa.index", compact("data", "request"));
     }
 
     /**
@@ -34,8 +39,8 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nisn" => "required",
-            "nama_siswa" => "required",
+            "nisn" => "required|unique:siswas",
+            "nama_siswa" => "required|unique:siswas",
             "kota" => "required",
             "jk" => "required",
             "agama" => "required",

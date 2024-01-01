@@ -38,6 +38,7 @@ Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login-post', [LoginController::class, 'authenticate'])->name('login.post');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+
 Route::get('/halaman', [HalamanController::class, 'index'])->name('halaman-index');
 
 Route::get('/', function () {

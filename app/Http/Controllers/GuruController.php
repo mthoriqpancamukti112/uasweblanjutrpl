@@ -11,10 +11,14 @@ class GuruController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Guru::with('mapel')->orderBy('created_at', 'desc')->get();
-        return view("guru.index", compact("data"));
+        if ($request->has('cari')) {
+            $data = Guru::where('nama_guru', 'like', '%' . $request->cari . '%')->get();
+        } else {
+            $data = Guru::with('mapel')->orderBy('nama_guru', 'asc')->get();
+        }
+        return view("guru.index", compact("data", "request"));
     }
 
     /**
@@ -33,8 +37,8 @@ class GuruController extends Controller
     {
         $request->validate([
             "image" => "required|image|mimes:jpeg,png,jpg",
-            "nip" => "required",
-            "nama_guru" => "required",
+            "nip" => "required|unique:gurus",
+            "nama_guru" => "required|unique:gurus",
             "no_hp" => "required",
             "jk" => "required",
             "mata_pelajaran" => "required",
@@ -60,10 +64,14 @@ class GuruController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Request $request)
     {
-        $data = Guru::all();
-        return view("halamanDataGuru", compact("data"));
+        if ($request->has('cari')) {
+            $data = Guru::where('nama_guru', 'like', '%' . $request->cari . '%')->get();
+        } else {
+            $data = Guru::orderBy('nama_guru', 'asc')->get();
+        }
+        return view("halamanDataGuru", compact("data", "request"));
     }
 
     /**

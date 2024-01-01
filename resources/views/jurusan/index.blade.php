@@ -10,13 +10,20 @@
             <div class="col-md-12">
 
                 <a href="{{ route('jurusan.create') }}" class="btn btn-primary mb-3">
-                    <i class="fas fa-plus"></i>Tambah Data Jurusan
+                    <i class="fas fa-plus me-2"></i>Tambah Data
                 </a>
 
                 <div class="card">
                     <div class="card-header" style="font-size: 20px; text-align: center; color: black; font-weight: bold">
                         Data Jurusan</div>
                     <div class="card-body">
+
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
+
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr style="text-align: center; font-size: 14px">
@@ -33,7 +40,7 @@
                                         <td>
                                             <form method="POST" action="{{ route('jurusan.destroy', $row->id) }}">
                                                 @csrf
-                                                @method('delete')   
+                                                @method('delete')
                                                 <button type="submit" class="btn btn-transparent"
                                                     onclick="return confirm('Apakah anda yakin ingin hapus?');">
                                                     <i class="bi bi-trash" style="font-size: 20px; color: red"></i>

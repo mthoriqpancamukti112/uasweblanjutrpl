@@ -12,7 +12,7 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        $data = Jurusan::all();
+        $data = Jurusan::orderBy('nama_jurusan', 'asc')->get();
         return view("jurusan.index", compact("data"));
     }
 
@@ -30,7 +30,7 @@ class JurusanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nama_jurusan" => "required",
+            "nama_jurusan" => "required|unique:jurusans",
         ]);
 
         Jurusan::create($request->all());
