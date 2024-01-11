@@ -30,6 +30,7 @@ Route::resource('/halaman', HalamanController::class);
 Route::get('profil', [ProfileController::class, 'index'])->name('profil');
 Route::get('halamanDataGuru', [GuruController::class, 'show'])->name('halamanDataGuru');
 Route::get('halamanGallery', [GaleryController::class, 'show'])->name('halamanGallery');
+
 Route::get('/kontak', function () {
     return view('halamanKontak');
 })->name('kontak');
